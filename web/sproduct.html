@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Ecom web</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/solid.css"
+        integrity="sha384-Tv5i09RULyHKMwX0E8wJUqSOaXlyu3SQxORObAI08iUwIalMmN5L6AvlPX2LMoSE" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/fontawesome.css"
+        integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha256.js"></script>
+    <link rel="icon" href="EH-images/icons/favicon.png" type="image/x-icon" id="favIcon">
+    <script src="https://kit.fontawesome.com/2343674bd3.js" crossorigin="anonymous"></script>
+</head>
+
+<body id="sproduct">
+    <div style="position: sticky; top: 0; left: 0; z-index: 999;">
+        <div class="top-bar" id="top-bar" style="position: sticky; display: block;">
+            <span class="Message">Now FREE SHIPPING on all orders above ₹<span id="discount-price"></span>!</span>
+    
+            <span class="top-bar-contact" style="margin: 14px;">
+                <i class="fas fa-envelope"></i>
+                <span style="margin-right: 5px;">test@gmail.com</span>
+    
+                <i class="fas fa-phone-square-alt"></i>
+                <span>+91 ##########</span>
+    
+            </span>
+    
+            <div class="Social-links">
+                <a href="" target="_blank" >
+                    <i class=" fab fa-facebook" aria-hidden="true" role="img"></i>
+                </a>
+                <a href=""  target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href=""  target="_blank">
+                    <i class=" fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+        <section id="header">
+            <a href="index.html"><img width="100" height="50" src="EH-images/icons/logo.png" class="logo" alt="" id="logo"></a>
+            <div>
+                <ul id="navbar">
+                    <li id="lg-bag"><a onclick="toggleSearch()"><i class="fas fa-search"></i></a></li>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a class="active" href="shop.html">SHOP</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <li id="signup" style="display: none;"><a href="signup.html">SIGN UP</a></li>
+                    <li id="lg-fav"><a href="wishlist.html"><i class="fas fa-heart"></i></a></li>
+                    <li id="lg-bag"><a href="cart.html"><i class="fas fa-shopping-bag"></i></a></li>
+                    <div class="profile Proicon" id="NormalP" style="cursor: pointer; padding: 17px;" onclick="toggleProfile()">
+                        <i class="fa-solid fa-user Proicon" style="color: #dfe0e2; font-size: 20px;"></i>
+                    </div>
+                    <a href="#" id="close"><i class="fas fa-times" style="color: white;"></i></a>
+                </ul>
+            </div>
+        
+            <div id="mobile">
+                <a onclick="toggleSearch()"><i class="fas fa-search"></i></a>
+                <a href="cart.html"><i class="fas fa-shopping-bag"></i></a>
+            
+                <div class="profile" style="cursor: pointer;" onclick="toggleProfile()">
+                    <i class="fa-solid fa-user Proicon" style="color: #dfe0e2;"></i>
+                </div>
+                <div>
+                    <i id="bar" class="fas fa-outdent"></i>
+                </div>
+            </div>
+            
+            <div class="menu">
+                <h3 id="ProfileUsername">username<br></h3>
+                <ul>
+                    <li><a href="clearLocalStorage.html"><i class="fa fa-right-from-bracket"></i> <b>Sign out</b></a></li>
+                    <li><a href="wishlist.html"><i class="fa fa-heart"></i> <b>Wish List</b></a></li>
+                    <li><a href="cart.html"><i class="fa fa-shopping-bag"></i> <b>Cart</b></a></li>
+                    <li><a href="myorders.html"><i class="fa-solid fa-shop"></i></i> <b>My Orders</b></a></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <div class="search_bar" id="search_bar">
+        <div class="search">
+            <i class="search-icon fas fa-search" onclick="searchProducts()" aria-hidden="true"></i>
+            <input class="search-input" type="text" id="search" onkeypress="enterEvent(event)"
+                placeholder="Search by product, category or collection">
+        </div>
+    </div>
+
+    <div class="Loading-block" id="loading-message" style="top: 130px;">
+        <div class="loader" id="loader"></div>
+    </div>
+
+    <div style="margin: 40px 20px 0px 20px;">
+        <section id="prodetails" class="section-p1">
+            <div class="single-pro-image">
+                
+                <img src="EH-images/products/dummy.png" width="100%" id="MainImage" alt="">
+                <div class="small-img-group">
+                    <div class="small-img-col">
+                        
+                        <img src="EH-images/products/dummy.png" width="100%" class="small-img" alt="" id="img-1">
+                    </div>
+                    <div class="small-img-col">
+                        
+                        <img src="EH-images/products/dummy.png" width="100%" class="small-img" alt="" id="img-2">
+                    </div>
+                    <div class="small-img-col">
+                        
+                        <img src="EH-images/products/dummy.png" width="100%" class="small-img" alt="" id="img-3">
+                    </div>
+                    <div class="small-img-col">
+                        
+                        <img src="EH-images/products/dummy.png" width="100%" class="small-img" alt="" id="img-4">
+                    </div>
+    
+                </div>
+            </div>
+            <div class="single-pro-details">
+                <h6 id="category" style="font-size: 15px;">Development Board</h6>
+                <h4 id="title">Arduino Uno R3 Development Board Clone Compatiable</h4>
+                <div class="fpricediv">
+                    <del class="oldPrice" id="oldPriceMain" style="margin-top: 40px;"></del>
+                    <h4 id="price"></h4>
+                </div>
+               
+                <input type="number" value="1" min="1" id="quantity" style="width: 50px;">
+                <div style="    margin-top: 16px;
+                display: flex;
+                gap: 10px;
+                justify-items: start;">
+                    <button class="normal" id="CartButton" onclick="cartFunction2()">Add to cart</button>
+                    <button class="normal" id="OpenCart" onclick="window.open('cart.html', '_self')" style="display: none;">Go to cart</button>
+                
+                </div>
+                <h4>Product Details</h4>
+                <span id="description"><ul><br>
+                    <li><strong>Model:</strong> Arduino Uno R3</li><br>
+                    <li><strong>Microcontroller:</strong> ATmega328P</li><br>
+                    <li><strong>Operating Voltage:</strong> 5V</li><br>
+                    <li><strong>Input Voltage (recommended):</strong> 7-12V</li><br>
+                    <li><strong>Digital I/O Pins:</strong> 14 (of which 6 provide PWM output)</li><br>
+                    <li><strong>Analog Input Pins:</strong> 6</li><br>
+                    <li><strong>DC Current per I/O Pin:</strong> 20 mA</li><br>
+                    <li><strong>Flash Memory:</strong> 32 KB (ATmega328P) of which 0.5 KB used by bootloader</li><br>
+                    <li><strong>SRAM:</strong> 2 KB (ATmega328P)</li><br>
+                    <li><strong>EEPROM:</strong> 1 KB (ATmega328P)</li><br>
+                    <li><strong>Clock Speed:</strong> 16 MHz</li><br>
+                    <li><strong>Connectivity:</strong> USB</li><br>
+                    <li><strong>Dimensions:</strong> 68.6 mm x 53.4 mm</li><br>
+                    <li><strong>Weight:</strong> 25 g</li><br>
+                    <li><strong>Features:</strong><br>
+                        <ul><br>
+                            <li>Built-in LED (pin 13)</li><br>
+                            <li>Resettable polyfuse protects your computer's USB ports from shorts and overcurrent</li><br>
+                            <li>Compatible with most Arduino shields</li><br>
+                        </ul><br>
+                    </li><br>
+                    <br>
+                </ul><br></span>
+            </div>
+        </section>
+        
+
+
+        <section id="product1" style="margin-top: 40px" class="section-p1">
+            <h2>On Sale</h2>
+            <!-- <p>Collection of pro Mordern Design</p> -->
+            <div class="pro-container" id="pro-container">
+            </div>
+        </section>
+
+        
+        <section id="product1" style="margin-top: 40px" class="section-p1">
+            <h2>Latest Products</h2>
+            <!-- <p>Collection of pro Mordern Design</p> -->
+            <div class="pro-container">
+                <div class="pro">
+                    <div>
+                        <span class="onsale" id="fsale-1">Sale!</span>
+                        <img src="EH-images/products/dummy.png" alt="" id="fimg-1" loading="lazy">
+                        <a class="fa-regular fa-heart" style="color: red; position: absolute; margin-left: -27px; margin-top: 8px;"
+                            value="no" id="fheart-1"></a>
+                    </div>
+                    <p id="fdesc-1" style="color: black;">test</p>
+                    <h5 id="d-1" style="font-weight: bolder;">
+                        Raspberry Pi 4 Model B - ...
+                    </h5>
+                    <div class="star" id="fstar-1">
+                        <!-- <img src="EH-images/icons/star.png" alt="" loading="lazy">
+                                        <img src="EH-images/icons/star.png" alt="" loading="lazy">
+                                        <img src="EH-images/icons/star.png" alt="" loading="lazy">
+                                        <img src="EH-images/icons/star.png" alt="" loading="lazy"> -->
+                    </div>
+                    <div class="fpricediv-1">
+                        <del class="oldPrice" id="oldPrice-1"></del>
+                        <h4 id="fprice-1"></h4>
+                    </div>
+                    <div class="cart">
+                        <a><img src="EH-images/icons/cart.png" class="CartImg" alt="Add to cart" id="fcart-1" loading="lazy"></i></a>
+                        </li>
+                    </div>
+                </div>
+    
+            
+    
+    
+                <div class="pro">
+                    <div>
+                        <span class="onsale" id="fsale-2">Sale!</span>
+                        <img src="EH-images/products/dummy.png" alt="" id="fimg-2" loading="lazy">
+                        <a class="fa-regular fa-heart"
+                            style="color: red; position: absolute; margin-left: -27px; margin-top: 8px;" value="no"
+                            id="fheart-2"></a>
+                    </div>
+                    <p id="fdesc-2" style="color: black;">test</p>
+                    <h5 id="d-2" style="font-weight: bolder;">
+                        Raspberry Pi 4 Model B - ...
+                    </h5>
+                    <div class="star" id="fstar-2">
+                        <!-- <img src="EH-images/icons/star.png" alt="" loading="lazy">
+                            <img src="EH-images/icons/star.png" alt="" loading="lazy">
+                            <img src="EH-images/icons/star.png" alt="" loading="lazy">
+                            <img src="EH-images/icons/star.png" alt="" loading="lazy"> -->
+                    </div>
+                    <div class="fpricediv-2">
+                        <del class="oldPrice" id="oldPrice-2"></del>
+                        <h4 id="fprice-2"></h4>
+                    </div>
+                    <div class="cart">
+                        <a><img src="EH-images/icons/cart.png" class="CartImg" alt="Add to cart" id="fcart-2"
+                                loading="lazy"></i></a></li>
+                    </div>
+                </div>
+    
+    
+                <div class="pro">
+                    <div>
+                        <span class="onsale" id="fsale-3">Sale!</span>
+                        <img src="EH-images/products/dummy.png" alt="" id="fimg-3" loading="lazy">
+                        <a class="fa-regular fa-heart" style="color: red; position: absolute; margin-left: -27px; margin-top: 8px;"
+                            value="no" id="fheart-3"></a>
+                    </div>
+                
+                    <p id="fdesc-3" style="color: black;">test</p>
+                    <h5 id="d-3" style="font-weight: bolder;">
+                        Raspberry Pi 4 Model B - ...
+                    </h5>
+                    <div class="star" id="fstar-3">
+                        <!-- <img src="EH-images/icons/star.png" alt="" loading="lazy">
+                                        <img src="EH-images/icons/star.png" alt="" loading="lazy">
+                                        <img src="EH-images/icons/star.png" alt="" loading="lazy">
+                                        <img src="EH-images/icons/star.png" alt="" loading="lazy"> -->
+                    </div>
+                    <div class="fpricediv-3">
+                        <del class="oldPrice" id="oldPrice-3"></del>
+                        <h4 id="fprice-3"></h4>
+                    </div>
+                    <div class="cart">
+                        <a><img src="EH-images/icons/cart.png" class="CartImg" alt="Add to cart" id="fcart-3" loading="lazy"></i></a>
+                        </li>
+                    </div>
+                </div>
+    
+    
+                
+    
+                <div class="pro">
+                    <div>
+                        <span class="onsale" id="fsale-4">Sale!</span>
+                        <img src="EH-images/products/dummy.png" alt="" id="fimg-4" loading="lazy">
+                        <a class="fa-regular fa-heart" style="color: red; position: absolute; margin-left: -27px; margin-top: 8px;"
+                            value="no" id="fheart-4"></a>
+                    </div>
+                
+                    <p id="fdesc-4" style="color: black;">test</p>
+                    <h5 id="d-4" style="font-weight: bolder;">
+                        Raspberry Pi 4 Model B - ...
+                    </h5>
+                    <div class="star" id="fstar-4"></div>
+                    <div class="fpricediv-4">
+                        <del class="oldPrice" id="oldPrice-4"></del>
+                        <h4 id="fprice-4"></h4>
+                    </div>
+                    <div class="cart">
+                        <a><img src="EH-images/icons/cart.png" class="CartImg" alt="Add to cart" id="fcart-4" loading="lazy"></i></a>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+            </div>
+        </section>
+    
+    </div>
+
+    
+
+
+    <footer class="section-p1" style="background-color: #2b2b2c;">
+        <div class="col">
+            <img class="footerLogo logo" width="100" height="50" src="EH-images/icons/logo.png" alt="" loading="lazy"
+                id="FooterLogo">
+            <p><b>Contact: <span onclick="window.location.href = 'contact.html'" style="font-weight: 300;">+91
+                        ##########</span></b></p>
+            <p><b>Address: <span onclick="window.location.href = 'contact.html'" style="font-weight: 300;"></span></b></p>
+            <p><b>Email: <a href="mailto:test@gmail.com" target="_blank"
+                        style="font-weight: 300;">test@gmail.com</a></b></p>
+            
+            <div class="follow">
+                <p><b>Follow us</b></p>
+    
+                <div class="social-media">
+                    <a href="" target="_blank"  class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="" target="_blank" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" target="_blank" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <p class="custom-underline"><b>About</b></p>
+            <a href="about.html">About us</a><br>
+            <a href="myorders.html">Delivery Information</a><br>
+            <a href="Privacy_Policy.html">Privacy Policy</a><br>
+            <a href="Terms_and_Conditions.html">Terms & Conditions</a><br>
+            <a href="Shipping_policy.html">Shipping Policy</a><br>
+            <a href="contact.html">Contact Us</a><br>
+        </div>
+        <div class="col">
+            <p class="custom-underline"><b>My Account</b></p>
+            <a href="cart.html">View Cart</a><br>
+            <a href="wishlist.html">My wishlist</a><br>
+            <a href="Return_and_Refund.html">Return and Refund</a><br>
+            <a href="contact.html">Help</a><br>
+        </div>
+    
+        <div class="col install">
+            <p class="custom-underline">Secured Payment Gateways</p>
+            <img src="EH-images/icons/pay.png" alt="" id="Pay" loading="lazy">
+        </div>
+    </footer>
+
+
+
+
+<div id="myPopup" class="popup">
+    <div id="popup-loading" class="loader" style="display: none; z-index: 999;"></div>
+        <div class="popup-content" style="border-radius: 20px;">
+            <div id="block" style="display: none; height: 100%; width: 100%; position: absolute; background-color: #fff0; z-index: 3;"></div>
+        <div id="content_title">
+            <h2>Edit Profile</h2>
+        </div>
+        <br><br>
+        <form id="regiform" style="margin-top: 10px;" action="javascript:void(0);">
+
+            <div class="image_prev" style="display: flex; justify-content: center;">
+
+                <label for="files" id="imgLabel" class="btn">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="camera">
+                        <path
+                            d="M19,6.5H17.72l-.32-1a3,3,0,0,0-2.84-2H9.44A3,3,0,0,0,6.6,5.55l-.32,1H5a3,3,0,0,0-3,3v8a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3v-8A3,3,0,0,0,19,6.5Zm1,11a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1v-8a1,1,0,0,1,1-1H7a1,1,0,0,0,1-.68l.54-1.64a1,1,0,0,1,.95-.68h5.12a1,1,0,0,1,.95.68l.54,1.64A1,1,0,0,0,17,8.5h2a1,1,0,0,1,1,1Zm-8-9a4,4,0,1,0,4,4A4,4,0,0,0,12,8.5Zm0,6a2,2,0,1,1,2-2A2,2,0,0,1,12,14.5Z">
+                        </path>
+                    </svg>
+
+                    <div class="circular--landscape">
+                        <img src="" id="imgID" loading="lazy">
+                    </div>
+
+                </label>
+
+                <input type="file" id="files" name="profile" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"
+                    style="display: none;" onChange="ImageFunc(this);">
+            </div>
+
+            <div class="UsernameField" style="width: 100%;">
+                <input type="text" placeholder="Name" id="usernameReg" required>
+            </div>
+
+            <div id="Edit-button-container">
+                <button id="SaveProfile" type="submit" onclick="saveProfile()">
+                    Save
+                </button>
+
+                <button id="closePopup" onclick="void(0)">
+                    Cancel
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="AlertMessage" id="AlertMessage">
+    <div class="MessageContent">
+        <div class="AlertContent" id="AlertContent"></div>
+        <div>
+            <button class="btn" id="AlertBtn" onclick="document.getElementById('AlertMessage').style.display='none'"
+                style="width: 80px; margin-top: 20px; font-weight: bold; border: 2px solid;">OKay</button>
+        </div>
+    </div>
+</div>
+
+
+    <script src="js/data.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/sproduct.js"></script>
+   
+    <script>
+        function enterEvent(event) {
+            if (event.keyCode == 13) {
+                var searchQuery = document.getElementById('search').value.replace(' ', '%');
+                window.location.href = 'shop.html?search=' + searchQuery;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

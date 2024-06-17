@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Ecom web</title>
+    <link rel="stylesheet" href="css/signup.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/solid.css"
+        integrity="sha384-Tv5i09RULyHKMwX0E8wJUqSOaXlyu3SQxORObAI08iUwIalMmN5L6AvlPX2LMoSE" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/fontawesome.css"
+        integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha256.js"></script>
+    <link rel="icon" href="EH-images/icons/favicon.png" type="image/x-icon" id="favIcon">
+    <script src="https://kit.fontawesome.com/2343674bd3.js" crossorigin="anonymous"></script>
+</head>
+
+
+<body id="signup">
+
+    <div style="position: sticky; top: 0; left: 0; z-index: 999;">
+        
+
+        <section id="header" style="background: #2b2b2c;">
+            <a href="index.html"><img width="100" height="50" src="EH-images/icons/logo.png" class="logo" alt=""
+                    id="logo"></a>
+            <div>
+                <ul id="navbar">
+                    <li id="lg-bag"><a onclick="window.location.href='shop.html'"><i class="fas fa-search"></i></a></li>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="shop.html">SHOP</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <li id="signup" style="display: none;"><a class="active" href="#">SIGN UP</a></li>
+                    <li id="lg-fav"><a href="wishlist.html"><i class="fas fa-heart"></i></a></li>
+                    <li id="lg-bag"><a href="cart.html"><i class="fas fa-shopping-bag"></i></a></li>
+                    <div class="profile Proicon" id="NormalP" style="cursor: pointer; padding: 17px;" onclick="toggleProfile()">
+                        <i class="fa-solid fa-user Proicon" style="color: #dfe0e2; font-size: 20px;"></i>
+                    </div>
+                    <a href="#" id="close"><i class="fas fa-times" style="color: white;"></i></a>
+                </ul>
+            </div>
+
+            <div id="mobile">
+                <a onclick="window.location.href='shop.html'"><i class="fas fa-search"></i></a>
+                <a href="cart.html"><i class="fas fa-shopping-bag"></i></a>
+
+                <div class="profile" style="cursor: pointer;" onclick="toggleProfile()">
+                    <i class="fa-solid fa-user Proicon" style="color: #dfe0e2;"></i>
+                </div>
+                <div>
+                    <i id="bar" class="fas fa-outdent"></i>
+                </div>
+            </div>
+
+            <div class="menu">
+                <h3 id="ProfileUsername"><br></h3>
+                <ul>
+                    <li><a href="clearLocalStorage.html"><i class="fa fa-right-from-bracket"></i> <b>Sign out</b></a></li>
+                    <li><a href="wishlist.html"><i class="fa fa-heart"></i> <b>Wish List</b></a></li>
+                    <li><a href="cart.html"><i class="fa fa-shopping-bag"></i> <b>Cart</b></a></li>
+                    <li><a href="myorders.html"><i class="fa-solid fa-shop"></i></i> <b>My Orders</b></a></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <div class="search_bar" id="search_bar">
+        <div class="search">
+            <i class="search-icon fas fa-search" onclick="searchProducts()" aria-hidden="true"></i>
+            <input class="search-input" type="text" id="search" onkeypress="enterEvent(event)"
+                placeholder="Search by product, category or collection">
+        </div>
+    </div>
+
+    <div class="Loading-block" id="loading-message" style="top: 130px;">
+        <div class="loader" id="loader"></div>
+    </div>
+
+    <!------------------------ Account Page ------------------------------>
+
+    <div class="container" style="background-image: url(EH-images/background/signup.png); background-size: cover;">
+        <div class="forms-container">
+            <div class="signin-signup">
+                <form id="loginform" class="sign-in-form">
+                    <h2 class="title" style="color:#555555">Reset Password</h2>
+
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="mail" placeholder="Email" />
+                    </div>
+                    <div class="Error" id="LoginUserError"></div>
+
+                    <div id="INPUTOTP"></div>
+
+                    <!-- <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="LoginPass" placeholder="Password" />
+                    </div> -->
+                    <div class="Error" id="LoginPassError"></div>
+
+                    <div class="Loading-block" id="Login-loading"
+                        style="position: unset; height: unset; backdrop-filter: none; display: none;">
+                        <div class="loader"></div>
+                    </div>
+
+                    <button id="otpButton" onclick="OTPrequest(event)" class="btn solid">request OTP</button>
+                    <!-- <div id="ResetPass" style="display: block;">
+                        <a href="javascript:resendFunc()" id="resend">Forgot Password?</a>
+                    </div> -->
+                    <div class="Error" style="margin-top: 10px" id="LoginActionError"></div>
+                </form>
+            </div>
+        </div>
+        <div class="panels-container">
+
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>One of us?</h3>
+                    <p>Sign in to your Ecom web account and make awesome projects.</p>
+                    <!-- <button class="btn transparent" id="sign-up-btn" onclick="window.location.href='signup.html'">Sign In</button> -->
+                </div>
+                <img src="EH-images/signup/log.svg" class="image" alt="">
+            </div>
+
+            <div class="panel right-panel">
+                <div class="content">
+                    <h3 style="color: black !important;">One of us?</h3>
+                    <p style="color: black !important;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
+                        minus natus est.</p>
+                    <button class="btn transparent" id="sign-in-btn"
+                        style="font-weight: 700; color: black !important; border: 2px solid #000;">Sign In</button>
+                </div>
+                <img src="EH-images/signup/register.svg" class="image" alt="">
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <footer class="section-p1" style="background-color: #2b2b2c;">
+        <div class="col">
+            <img class="footerLogo logo" width="100" height="50" src="EH-images/icons/logo.png" alt="" loading="lazy"
+                id="FooterLogo">
+            <p><b>Contact: <span onclick="window.location.href = 'contact.html'" style="font-weight: 300;">+91
+                        ##########</span></b></p>
+            <p><b>Address: <span onclick="window.location.href = 'contact.html'" style="font-weight: 300;"></span></b></p>
+            <p><b>Email: <a href="mailto:etest@gmail.com" target="_blank"
+                        style="font-weight: 300;">etest@gmail.com</a></b></p>
+            
+            <div class="follow">
+                <p><b>Follow us</b></p>
+
+                <div class="social-media">
+                    <a href="" target="_blank"  class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="" target="_blank" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" target="_blank" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <p class="custom-underline"><b>About</b></p>
+            <a href="about.html">About us</a><br>
+            <a href="myorders.html">Delivery Information</a><br>
+            <a href="Privacy_Policy.html">Privacy Policy</a><br>
+            <a href="Terms_and_Conditions.html">Terms & Conditions</a><br>
+            <a href="Shipping_policy.html">Shipping Policy</a><br>
+            <a href="contact.html">Contact Us</a><br>
+        </div>
+        <div class="col">
+            <p class="custom-underline"><b>My Account</b></p>
+            <a href="cart.html">View Cart</a><br>
+            <a href="wishlist.html">My wishlist</a><br>
+            <a href="Return_and_Refund.html">Return and Refund</a><br>
+            <a href="contact.html">Help</a><br>
+        </div>
+    
+        <div class="col install">
+            <p class="custom-underline">Secured Payment Gateways</p>
+            <img src="EH-images/icons/pay.png" alt="" id="Pay" loading="lazy">
+        </div>
+    </footer>
+
+    <div class="AlertMessage" id="AlertMessage">
+        <div class="MessageContent">
+            <div class="AlertContent" id="AlertContent"></div>
+            <div>
+                <button class="btn" id="AlertBtn" onclick="document.getElementById('AlertMessage').style.display='none'"
+                    style="width: 80px; margin-top: 20px; font-weight: bold; border: 2px solid;">OKay</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+
+
+
+</body>
+
+</html>

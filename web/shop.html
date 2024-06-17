@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ecom web</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/Shop.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/solid.css"
+        integrity="sha384-Tv5i09RULyHKMwX0E8wJUqSOaXlyu3SQxORObAI08iUwIalMmN5L6AvlPX2LMoSE" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/fontawesome.css"
+        integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha256.js"></script>
+    <link rel="icon" href="EH-images/icons/favicon.png" type="image/x-icon" id="favIcon">
+    <script src="https://kit.fontawesome.com/2343674bd3.js" crossorigin="anonymous"></script>
+</head>
+
+<body id="shop">
+    <!--<body style="background: radial-gradient(#333,#222,#fff)">-->
+    
+        <div style="position: sticky; top: 0; left: 0; z-index: 999;">
+            <div class="top-bar" id="top-bar" style="position: sticky; display: block;">
+                <span class="Message">Now FREE SHIPPING on all orders above ₹<span id="discount-price"></span>!</span>
+        
+                <span class="top-bar-contact" style="margin: 14px; min-height: 70px;">
+                    <i class="fas fa-envelope"></i>
+                    <span style="margin-right: 5px;">test@gmail.com</span>
+        
+                    <i class="fas fa-phone-square-alt"></i>
+                    <span>+91 ##########</span>
+        
+                </span>
+        
+                <div class="Social-links">
+                    <a href="" target="_blank">
+                        <i class=" fab fa-facebook" aria-hidden="true" role="img"></i>
+                    </a>
+                    <a href="" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" target="_blank">
+                        <i class=" fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        <!--========== HEADER ==========-->
+        <section id="header">
+            <a href="index.html"><img width="100" height="50" src="EH-images/icons/logo.png" class="logo" alt=""
+                    id="logo"></a>
+            <div>
+                <ul id="navbar">
+                    <!-- <li id="lg-bag"><a><i class="fas fa-search"></i></a></li> -->
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a class="active" href="#">SHOP</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <li id="signup" style="display: none;"><a href="signup.html">SIGN UP</a></li>
+                    <li id="lg-fav"><a href="wishlist.html"><i class="fas fa-heart"></i></a></li>
+                    <li id="lg-bag"><a href="cart.html"><i class="fas fa-shopping-bag"></i></a></li>
+                    <div class="profile Proicon" id="NormalP" style="cursor: pointer; padding: 17px;" onclick="toggleProfile()">
+                        <i class="fa-solid fa-user Proicon" style="color: #dfe0e2; font-size: 20px;"></i>
+                    </div>
+                    <a href="#" id="close"><i class="fas fa-times" style="color: white;"></i></a>
+                </ul>
+            </div>
+
+            <div id="mobile">
+                <!-- <a onclick="window.location.href='shop.html'"><i class="fas fa-search"></i></a> -->
+                <a href="cart.html"><i class="fas fa-shopping-bag"></i></a>
+            
+                <div class="profile" style="cursor: pointer;" onclick="toggleProfile()">
+                    <i class="fa-solid fa-user Proicon" style="color: #dfe0e2;"></i>
+                </div>
+                <div>
+                    <i id="bar" class="fas fa-outdent"></i>
+                </div>
+            </div>
+            
+            <div class="menu">
+                <h3 id="ProfileUsername">username<br></h3>
+                <ul>
+                    <li><a href="clearLocalStorage.html"><i class="fa fa-right-from-bracket"></i> <b>Sign out</b></a></li>
+                    <li><a href="wishlist.html"><i class="fa fa-heart"></i> <b>Wish List</b></a></li>
+                    <li><a href="cart.html"><i class="fa fa-shopping-bag"></i> <b>Cart</b></a></li>
+                    <li><a href="myorders.html"><i class="fa-solid fa-shop"></i></i> <b>My Orders</b></a></li>
+                </ul>
+            </div>
+        </section>
+        </div>
+
+    <div class="search_bar show" id="search_bar" style="z-index: 1;">
+        <div class="search">
+            <i class="search-icon fas fa-search" onclick="GetProData()" aria-hidden="true"></i>
+            <input class="search-input" type="text" id="search" onkeypress="enterEvent(event)"
+                placeholder="Search by product, category or collection">
+        </div>
+    </div>
+
+    <!--=================================filter section============================ ==========-->
+    <div class="nav" id="navbar1">
+        <nav class="nav__container">
+            <div>
+                <a href="#" class="nav__link nav__logo">
+                    <i class="nav__icon">
+                        <svg width="20" height="20" viewBox="0 0 256 256"> //filter icon
+                            <path fill="none" d="M0 0h256v256H0z"></path>
+                            <path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="20" d="M148 172H40M216 172h-28"></path>
+                            <circle cx="168" cy="172" r="20" fill="none" stroke="#fff" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="20"></circle>
+                            <path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="20" d="M84 84H40M216 84h-92"></path>
+                            <circle cx="104" cy="84" r="20" fill="none" stroke="#fff" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="20">
+
+                            </circle>
+                        </svg></i>
+                    <span class="nav__logo-name">Filters</span>
+                    <div class="actionButton" style="margin-top: 25px;">
+                        <button class="normal" style="border: 1px solid; border-radius: 6px;"
+                            onclick="resetFilter()">reset</button>
+                        <button class="normal" id="Apply" style="border: 1px solid; border-radius: 6px;"
+                            onclick="GetProData()">Apply</button>
+                    </div>
+                </a>
+
+                <!-- ==============================categories=============================================== -->
+                <div class="nav__list">
+                    <div class="nav__items" id="filter_container" style="padding: 5px;">
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    
+
+    <div class="header__toggle" id="ToggleFilter">
+        <div class="badge" id="badge" style="display: none;"></div>
+        <h6>Filters</h6>
+        <i id="header-toggle">
+            <svg class="svg1" width="20" height="20" viewBox="0 0 256 256">
+                <path fill="none" d="M0 0h256v256H0z"></path>
+                <path fill="none" stroke="#111112" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"
+                    d="M148 172H40M216 172h-28"></path>
+                <circle cx="168" cy="172" r="20" fill="none" stroke="#111112" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="20"></circle>
+                <path fill="none" stroke="#111112" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"
+                    d="M84 84H40M216 84h-92"></path>
+                <circle cx="104" cy="84" r="20" fill="none" stroke="#111112" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="20"></circle>
+            </svg>
+
+            <svg class="svg2 hide" width="19" height="16" viewBox="0 0 15 16" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.556 7.847H1M7.45 1L1 7.877l6.45 6.817" stroke="black" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+            </svg>
+        </i>
+    </div>
+
+    
+
+
+
+    <section id="error" class="section-p1" style="width: 100%; justify-content: center; display: none;">
+        <p style="font-size: 25px; color: #ff00009c;"><b>No result found</b></p>
+    </section>
+
+    <section id="product1" class="section-p1">
+        <div id="product-container"></div>
+
+        <div class="Loading-block" id="loading-message">
+            <div class="loader"></div>
+        </div>
+
+        <div id="trigger"></div>
+        <div>
+            <div class="pagination">
+            <a id="StartPage">&laquo;</a>
+
+                <div id="pages" style="display: inline-block;">
+                    <!-- <a id="page1" onclick="GetOnLoadData({page:1})">1</a> -->
+                    <!-- <a id="page1" onclick="updatePageNumber('2')">2</a>
+                    <a id="page1" onclick="updatePageNumber('3')">3</a> -->
+                </div>
+                <a  id="EndPage">&raquo;</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 
+    <section id="newsletter" class="section-p1 section-m1">
+        <div class="newstext" style="margin-left: 30px;">
+            <h4>Sign Up on Hellio Boo</h4>
+            <p>Join us and get whatever you want to wear with<span> special deals.</span></p>
+        </div>
+        <div class="form">
+            <button class="normal" style="border-radius: 10px; height: 50px; width: 150px;"
+                onclick="window.open('signup.html', '_self')">Sign Up</button>
+        </div>
+    </section> -->
+
+
+    <footer class="section-p1" style="background-color: #2b2b2c;">
+        <div class="col">
+            <img class="footerLogo logo" width="100" height="50" src="EH-images/icons/logo.png" alt="" loading="lazy"
+                id="FooterLogo">
+            <p><b>Contact: <span onclick="window.location.href = 'contact.html'" style="font-weight: 300;">+91
+                        ##########</span></b></p>
+            <p><b>Address: <span onclick="window.location.href = 'contact.html'" style="font-weight: 300;">address</span></b></p>
+            <p><b>Email: <a href="mailto:test@gmail.com" target="_blank"
+                        style="font-weight: 300;">test@gmail.com</a></b></p>
+            
+            <div class="follow">
+                <p><b>Follow us</b></p>
+
+                <div class="social-media">
+                    <a href="" target="_blank"  class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="" target="_blank" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" target="_blank" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <p class="custom-underline"><b>About</b></p>
+            <a href="about.html">About us</a><br>
+            <a href="myorders.html">Delivery Information</a><br>
+            <a href="Privacy_Policy.html">Privacy Policy</a><br>
+            <a href="Terms_and_Conditions.html">Terms & Conditions</a><br>
+            <a href="Shipping_policy.html">Shipping Policy</a><br>
+            <a href="contact.html">Contact Us</a><br>
+        </div>
+        <div class="col">
+            <p class="custom-underline"><b>My Account</b></p>
+            <a href="cart.html">View Cart</a><br>
+            <a href="wishlist.html">My wishlist</a><br>
+            <a href="Return_and_Refund.html">Return and Refund</a><br>
+            <a href="contact.html">Help</a><br>
+        </div>
+    
+        <div class="col install">
+            <p class="custom-underline">Secured Payment Gateways</p>
+            <img src="EH-images/icons/pay.png" alt="" id="Pay" loading="lazy">
+        </div>
+    </footer>
+
+
+    <div id="myPopup" class="popup">
+        <div id="popup-loading" class="loader" style="display: none; z-index: 999;"></div>
+        <div class="popup-content" style="border-radius: 20px;">
+            <div id="block"
+                style="display: none; height: 100%; width: 100%; position: absolute; background-color: #fff0; z-index: 3;">
+            </div>
+            <div id="content_title">
+                <h2>Edit Profile</h2>
+            </div>
+            <br><br>
+            <form id="regiform" style="margin-top: 10px;" action="javascript:void(0);">
+
+                <div class="image_prev" style="display: flex; justify-content: center;">
+
+                    <label for="files" id="imgLabel" class="btn">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="camera">
+                            <path
+                                d="M19,6.5H17.72l-.32-1a3,3,0,0,0-2.84-2H9.44A3,3,0,0,0,6.6,5.55l-.32,1H5a3,3,0,0,0-3,3v8a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3v-8A3,3,0,0,0,19,6.5Zm1,11a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1v-8a1,1,0,0,1,1-1H7a1,1,0,0,0,1-.68l.54-1.64a1,1,0,0,1,.95-.68h5.12a1,1,0,0,1,.95.68l.54,1.64A1,1,0,0,0,17,8.5h2a1,1,0,0,1,1,1Zm-8-9a4,4,0,1,0,4,4A4,4,0,0,0,12,8.5Zm0,6a2,2,0,1,1,2-2A2,2,0,0,1,12,14.5Z">
+                            </path>
+                        </svg>
+
+                        <div class="circular--landscape">
+                            <img src="" id="imgID" loading="lazy">
+                        </div>
+
+                    </label>
+
+                    <input type="file" id="files" name="profile"
+                        accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" style="display: none;"
+                        onChange="ImageFunc(this);">
+                </div>
+
+                <div class="UsernameField" style="width: 100%;">
+                    <input type="text" placeholder="Name" id="usernameReg" required>
+                </div>
+
+                <div id="Edit-button-container">
+                    <button id="SaveProfile" type="submit" onclick="saveProfile()">
+                        Save
+                    </button>
+
+                    <button id="closePopup" onclick="void(0)">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="AlertMessage" id="AlertMessage">
+        <div class="MessageContent">
+            <div class="AlertContent" id="AlertContent"></div>
+            <div>
+                <button class="btn" id="AlertBtn" onclick="document.getElementById('AlertMessage').style.display='none'"
+                    style="width: 80px; margin-top: 20px; font-weight: bold; border: 2px solid;">OKay</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!--========== MAIN JS ==========-->
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+
+    <script src="js/shop.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function () {
+            var dropdowns = document.querySelectorAll('.nav__dropdown');
+
+            dropdowns.forEach(function (dropdown) {
+                dropdown.addEventListener('touchstart', function () {
+                    dropdown.classList.toggle('tapped');
+                });
+            });
+        });
+
+    </script>
+
+
+</body>
+
+</html>
